@@ -4,10 +4,10 @@ require 'rspec'
 require 'selenium-webdriver'
 require 'site_prism'
 
-require_relative 'helpers'
+#require_relative 'helpers'
 
 
-World(Helpers)
+#World(Helpers)
  
 
 $browser = ENV['BROWSER']
@@ -44,19 +44,20 @@ Capybara.register_driver :selenium do |app|
 
 end
 
+
 if $env.eql?('dev')
   $environment = ""
 elsif $env.eql?('hlg')
   $environment = ""
 elsif $env.eql?('prod')
-  $environment = "http://carrinho.casasbahia.com.br/?idsku=55014843"
+  $environment = ""
 else 
   $environment = ""
 end
 
 Capybara.configure do |config|
   config.default_driver = :selenium
-  #config.app_host = 'https://ninjainvoices.herokuapp.com'
+  #config.app_host = 'https://www.casasbahia.com.br'
 end
 
 Capybara.default_max_wait_time = 5

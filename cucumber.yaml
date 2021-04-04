@@ -9,4 +9,5 @@ html: --format html --out=reports/features.html
 json: --format json --out=reports/features.json
 
 dev: ENV=dev
+hlg: ENV=hlg
 prod: ENV=prod
