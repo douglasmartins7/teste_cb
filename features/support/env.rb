@@ -4,7 +4,6 @@ require 'rspec'
 require 'selenium-webdriver'
 require 'site_prism'
 
-require_relative '../pages/sections'
 require_relative 'helpers'
 
 
@@ -46,11 +45,13 @@ Capybara.register_driver :selenium do |app|
 end
 
 if $env.eql?('dev')
-  $environment = "https:///"
+  $environment = ""
+elsif $env.eql?('hlg')
+  $environment = ""
 elsif $env.eql?('prod')
-  $environment = "http://"
+  $environment = "http://carrinho.casasbahia.com.br/?idsku=55014843"
 else 
-  $environment = "https://"
+  $environment = ""
 end
 
 Capybara.configure do |config|
