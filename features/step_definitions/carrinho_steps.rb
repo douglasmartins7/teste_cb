@@ -1,19 +1,25 @@
 #encoding: utf-8
+require 'pry'
 
-Dado("que que tento acessar direto a url de carrinho") do
-   visit('https://carrinho.casasbahia.com.br/?idsku=55014843')
-    sleep 5
+Dado("que que tento acessar direto a url de carrinho com o {int}") do |produto|
+    @insurancePage = InsurancePage.new
+    @cartPage = CartPage.new
+   
+    @produto = produto
+    visit("https://carrinho.casasbahia.com.br/?idsku=#{@produto}")
 end
   
 Dado("vejo se produto possui seguro") do |table|
-    # table is a Cucumber::MultilineArgument::DataTable
-    pending # Write code here that turns the phrase above into concrete actions
+    @tem_seguro = table.rows_hash
+
+    @insurancePage.continuar.click if @tem_seguro['possui'] == 'sim' 
 end
   
-Quando("valido {int} no carrinho") do |int|
-    pending # Write code here that turns the phrase above into concrete actions
+Então("valido o produto no carrinho") do |table|
+    @nome_do_produto = table.rows_hash
+    
+    expect(@cartPage.name_product.text).to include @nome_do_produto["nome do produto"]
 end
+
+
   
-Então("ele é reservado") do
-    pending # Write code here that turns the phrase above into concrete actions
-end

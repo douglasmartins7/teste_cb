@@ -1,11 +1,8 @@
 class InsurancePage < SitePrism::Page
 	element :continuar, 'button[data-id=btnContinuar]'
-
-	def click_in(customer)
+	
+	def click_button_continue
 		self.continuar.click
 	end
-
-	def is_there
-		
-	end
+	
 end

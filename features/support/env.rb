@@ -16,31 +16,32 @@ $env = ENV['ENV']
 
 Capybara.register_driver :selenium do |app|
 
-    if $browser.eql?('headless')
-      Capybara::Selenium::Driver.new(app,
-      :browser => :chrome,
-      :desired_capabilities => Selenium::WebDriver::Remote::Capabilities.chrome(
-        'chromeOptions' => {
-          'args' => [ "headless", "window-size=1280x720", "disable-gpu"]
-        }
-      )
-    )
-  elsif $browser.eql?('chrome')
-    Capybara::Selenium::Driver.new(
+    if $browser.eql?('chrome')
+      Capybara::Selenium::Driver.new(
       app,
       browser: :chrome
-    )
-    elsif $browser.eql?('firefox')
-      Capybara::Selenium::Driver.new(
-        app,
-        browser: :firefox
-      )
-    elsif $browser.eql?('ie')
-      Capybara::Selenium::Driver.new(
-        app,
-        browser: :internet_explorer
       )
     end
+    # elsif $browser.eql?('headless')
+    #   Capybara::Selenium::Driver.new(app,
+    #   :browser => :chrome,
+    #   :desired_capabilities => Selenium::WebDriver::Remote::Capabilities.chrome(
+    #     'chromeOptions' => {
+    #       'args' => [ "headless", "window-size=1280x720", "disable-gpu"]
+    #     }
+    #   )
+    # )
+    # elsif $browser.eql?('firefox')
+    #   Capybara::Selenium::Driver.new(
+    #     app,
+    #     browser: :firefox
+    #   )
+    # else $browser.eql?('ie')
+    #   Capybara::Selenium::Driver.new(
+    #     app,
+    #     browser: :internet_explorer
+    #   )
+    # end
 
 end
 

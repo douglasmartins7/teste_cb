@@ -1,23 +1,27 @@
 #language: pt
 
-Funcionalidade: Adicionar produto ao carrinho direto pela Url de carrinho
+Funcionalidade: Adicionar produto ao carrinho
  Como cliente das Casas Bahia
  Quero adicionar um produto no carrinho    
  Para reservar meu produto   
-
-	Contexto: Acesso
-		Dado que que tento acessar direto a url de carrinho
 		
-	@carrinho
-	Esquema do Cenário: Adicionar um <produto> no carrinho 
+	@carrinho @cb
+	Esquema do Cenário: Adicionar um <produto> no carrinho direto pela URL
 
-    E vejo se produto possui seguro
-    | possui |  <tem seguro>  |
-    Quando valido <produto> no carrinho
-    Então ele é reservado
-    Exemplos:
-    | produto  | tem seguro |
-    | 55014843 | sim        |
-    | 50000639 |  não       |
+        Dado que que tento acessar direto a url de carrinho com o <numero do sku>
+        Quando vejo se produto possui seguro
+            | possui           |  <tem seguro>  |
+        Então valido o produto no carrinho
+            |  nome do produto |  <nome do produto>  |
+        Exemplos:
+            | numero do sku    | tem seguro | nome do produto     |
+            | 55014843         | sim        | iphone XR           |
+            | 50000639         | nao        | Fritadeira Elétrica |
 
+
+#need implementation
+#Cenário: Adicionar um <produto> no carrinho vindo pela vitrine
+
+#need implementation
+#Cenário: Adicionar um <produto> no carrinho vindo pelo google
 	
