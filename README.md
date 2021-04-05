@@ -17,15 +17,8 @@ Com essa dependência é possivel baixar todas as gem do gemfile
 bundler install 
 ```
 
-## Configuração do ambiente:
-Feita com o comando cucumber -p chrome -t @tag  -p env
-
-```
-
-```
-
 ## Execução dos testes 
-Feita com o comando cucumber -p chrome -t @tag  -p env
+Feita com o comando
 ```
- 
+  cucumber -p chrome -t @carrinho  -p prod
 ```
